@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apni Dukaan - Premium Store</title>
-  <!-- Google Fonts for Premium Look -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #E55B3C; /* Rich Terracotta/Orange */
+      --primary: #E55B3C;
       --primary-hover: #C94A2E;
-      --dark: #121212; /* Deep Black */
-      --dark-gray: #2A2A2A;
-      --light-bg: #F9F9FB; /* Off-white background */
+      --dark: #121212;
+      --light-bg: #F9F9FB;
       --white: #FFFFFF;
       --text-muted: #6B7280;
       --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
@@ -21,10 +19,7 @@
       --transition: all 0.3s ease;
     }
 
-    * { 
-      margin: 0; padding: 0; box-sizing: border-box; 
-      font-family: 'Poppins', sans-serif; 
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background: var(--light-bg); color: var(--dark); }
 
     /* ================= NAVBAR ================= */
@@ -36,21 +31,14 @@
     .logo { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 10px; color: var(--dark); }
     .logo span { color: var(--primary); }
     
-    /* Premium Search Bar */
-    .search-container {
-      flex: 1; max-width: 500px; margin: 0 2rem; position: relative;
-    }
-    .search-container i {
-      position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);
-    }
+    .search-container { flex: 1; max-width: 500px; margin: 0 2rem; position: relative; }
+    .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
     .search-input {
       width: 100%; padding: 12px 20px 12px 45px; border: 1px solid #E5E7EB;
       border-radius: 50px; font-size: 0.95rem; background: #F3F4F6; outline: none;
       transition: var(--transition);
     }
-    .search-input:focus {
-      background: var(--white); border-color: var(--primary); box-shadow: 0 0 0 3px rgba(229, 91, 60, 0.1);
-    }
+    .search-input:focus { background: var(--white); border-color: var(--primary); box-shadow: 0 0 0 3px rgba(229, 91, 60, 0.1); }
 
     .cart-btn { 
       background: var(--primary); color: white; border: none; padding: 0.7rem 1.4rem; 
@@ -60,60 +48,139 @@
     .cart-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
     .cart-count { background: white; color: var(--primary); border-radius: 50%; padding: 2px 8px; font-size: 0.85rem; }
 
-    /* ================= HERO SECTION ================= */
-    .hero {
-      background: var(--dark); color: white; padding: 5rem 2rem; text-align: center;
+    /* ================= HERO & HANGING CATEGORIES ================= */
+    .premium-hero {
+      background: var(--dark);
+      color: white;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -1px; }
-    .hero h1 span { color: var(--primary); }
-    .hero p { font-size: 1.1rem; color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 300; }
-
-    /* ================= CATEGORIES ================= */
-    .categories-wrap {
-      display: flex; justify-content: center; gap: 2.5rem; padding: 2.5rem 1rem;
-      background: var(--white); box-shadow: var(--shadow-sm); overflow-x: auto;
-    }
-    .cat-item { text-align: center; cursor: pointer; transition: var(--transition); }
-    .cat-item:hover { transform: translateY(-5px); }
-    .cat-icon {
-      width: 70px; height: 70px; background: #FFF5F2; color: var(--primary);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; margin: 0 auto 10px; transition: var(--transition);
-      border: 2px solid transparent;
-    }
-    .cat-item:hover .cat-icon { border-color: var(--primary); background: white; box-shadow: var(--shadow-sm); }
-    .cat-item p { font-size: 0.9rem; font-weight: 600; color: var(--dark-gray); }
-
-    /* ================= FASHION HANGING SECTION ================= */
-    .fashion-section { padding: 5rem 1rem; text-align: center; background: #1F1F1F; color: white; overflow: hidden; }
-    .fashion-section h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.5px; }
-    .fashion-section p { color: #9CA3AF; margin-bottom: 3rem; }
     
-    .hanging-container {
-      display: flex; justify-content: center; align-items: flex-start;
-      position: relative; max-width: 1200px; margin: 0 auto; height: 350px;
+    .hero-text h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -1px; }
+    .hero-text h1 span { color: var(--primary); }
+    .hero-text p { font-size: 1.1rem; color: #9CA3AF; max-width: 600px; margin: 0 auto 3rem; font-weight: 300; }
+
+    /* Hanging Categories Container */
+    .hanging-categories {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
-    .rope { position: absolute; top: 10px; width: 80%; height: 4px; background: #444; border-radius: 5px; }
-    .hanger {
-      position: relative; width: 160px; margin: 0 20px; z-index: 2;
-      transform-origin: top center; animation: swing 4s infinite alternate ease-in-out; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center;
+
+    /* The Rope/String */
+    .rope {
+      position: absolute;
+      top: 20px;
+      width: 85%;
+      height: 3px;
+      background: #333;
+      border-radius: 5px;
+      z-index: 1;
+      /* Halka sa curve dene ke liye */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
-    .hanger:nth-child(even) { animation-delay: 1s; }
-    .hanger:hover { animation-play-state: paused; transform: scale(1.05) translateY(5px); }
-    .hanger img { width: 100%; height: 190px; object-fit: contain; filter: drop-shadow(0 20px 20px rgba(0,0,0,0.4)); margin-top: -10px; }
+
+    /* Individual Category Item */
+    .hanging-cat {
+      position: relative;
+      width: 140px;
+      margin: 0 20px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transform-origin: top center;
+      animation: swing 4s infinite alternate ease-in-out;
+    }
+
+    /* Har item ki animation thodi alag (staggered) */
+    .hanging-cat:nth-child(2) { animation-delay: 0.5s; }
+    .hanging-cat:nth-child(3) { animation-delay: 1s; }
+    .hanging-cat:nth-child(4) { animation-delay: 1.5s; }
+    .hanging-cat:nth-child(5) { animation-delay: 2s; }
+    .hanging-cat:nth-child(6) { animation-delay: 0.2s; }
+
+    /* The Hanger Graphic (Hook) */
+    .hanger-hook {
+      width: 20px;
+      height: 40px;
+      border: 2px solid #666;
+      border-bottom: none;
+      border-radius: 15px 15px 0 0;
+      margin: 0 auto;
+      position: relative;
+      top: 5px;
+      transition: var(--transition);
+    }
+    .hanger-hook::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      background: var(--dark);
+    }
+
+    /* Category Image */
+    .hanging-cat img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 15px rgba(0,0,0,0.5));
+      transition: var(--transition);
+    }
+
+    .hanging-cat h3 {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      transition: var(--transition);
+    }
+
+    /* HOVER EFFECT: Size bada hona aur rukna */
+    .hanging-cat:hover {
+      animation-play-state: paused; /* Animation rok dein */
+      transform: scale(1.25) translateY(10px); /* Size bada karein */
+      z-index: 10;
+    }
     
-    @keyframes swing { 0% { transform: rotate(1.5deg); } 100% { transform: rotate(-1.5deg); } }
+    .hanging-cat:hover img {
+      filter: drop-shadow(0 25px 25px rgba(229, 91, 60, 0.4)); /* Orange glow */
+    }
+
+    .hanging-cat:hover h3 {
+      color: var(--primary);
+    }
+
+    .hanging-cat:hover .hanger-hook {
+      border-color: var(--primary);
+    }
+    .hanging-cat:hover .hanger-hook::before {
+      border-color: var(--primary);
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3deg); }
+    }
 
     /* ================= PRODUCTS GRID ================= */
-    .container { max-width: 1300px; margin: 0 auto; padding: 5rem 1.5rem; }
-    .section-title { 
-      font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; color: var(--dark);
-      display: flex; align-items: center; gap: 15px;
-    }
-    .section-title::after {
-      content: ''; flex: 1; height: 1px; background: #E5E7EB;
-    }
+    .container { max-width: 1300px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-title { font-size: 2rem; margin-bottom: 2.5rem; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 15px; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: #E5E7EB; }
     
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
     .product-card {
@@ -122,36 +189,18 @@
       border: 1px solid #F3F4F6;
     }
     .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
-    .product-tag { 
-      position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; 
-      font-size: 0.7rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase;
-    }
-    .product-img-box { 
-      width: 120px; height: 120px; background: #F9F9FB; border-radius: 50%; 
-      margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; 
-      font-size: 3rem; color: var(--primary); transition: var(--transition);
-    }
+    .product-tag { position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; font-size: 0.7rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; }
+    .product-img-box { width: 120px; height: 120px; background: #F9F9FB; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); transition: var(--transition); }
     .product-card:hover .product-img-box { transform: scale(1.1); background: #FFF5F2; }
     .product-card h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--dark); font-weight: 600; }
     .price { font-weight: 800; color: var(--dark); margin-bottom: 1.5rem; font-size: 1.3rem; }
-    .add-btn { 
-      background: var(--white); border: 2px solid var(--dark); color: var(--dark); width: 100%; 
-      padding: 0.8rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: var(--transition);
-    }
+    .add-btn { background: var(--white); border: 2px solid var(--dark); color: var(--dark); width: 100%; padding: 0.8rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); }
     .add-btn:hover { background: var(--dark); color: var(--white); }
 
-    /* ================= CART SIDEBAR ================= */
-    .cart-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); z-index: 1000; 
-      opacity: 0; visibility: hidden; transition: var(--transition);
-    }
+    /* ================= CART ================= */
+    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); }
     .cart-overlay.active { opacity: 1; visibility: visible; }
-    .cart-panel {
-      position: absolute; right: 0; top: 0; width: 100%; max-width: 420px; height: 100%;
-      background: var(--white); display: flex; flex-direction: column; 
-      transform: translateX(100%); transition: var(--transition);
-    }
+    .cart-panel { position: absolute; right: 0; top: 0; width: 100%; max-width: 420px; height: 100%; background: var(--white); display: flex; flex-direction: column; transform: translateX(100%); transition: var(--transition); }
     .cart-overlay.active .cart-panel { transform: translateX(0); }
     .cart-header { padding: 1.8rem; border-bottom: 1px solid #E5E7EB; display: flex; justify-content: space-between; align-items: center; }
     .close-cart { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-muted); transition: var(--transition); }
@@ -165,32 +214,21 @@
     .qty-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
     .cart-footer { padding: 1.8rem; border-top: 1px solid #E5E7EB; background: var(--light-bg); }
     .cart-total { display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem; }
-    .checkout-btn { 
-      width: 100%; background: #25D366; color: white; border: none; padding: 1.1rem; 
-      border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; 
-      display: flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition);
-    }
+    .checkout-btn { width: 100%; background: #25D366; color: white; border: none; padding: 1.1rem; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition); }
     .checkout-btn:hover { background: #1DAE54; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
-    
-    /* ================= TOAST ================= */
-    .toast {
-      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: var(--dark); color: white; padding: 1rem 2rem; border-radius: 50px;
-      font-weight: 500; box-shadow: var(--shadow-lg); opacity: 0; transition: var(--transition); z-index: 2000;
-    }
+
+    .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--dark); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: 500; box-shadow: var(--shadow-lg); opacity: 0; transition: var(--transition); z-index: 2000; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ================= RESPONSIVE ================= */
+    /* Responsive */
     @media (max-width: 900px) {
       .navbar { padding: 1rem 1.5rem; }
-      .search-container { display: none; } /* Mobile par search bar header se hide (optional) */
-      .hero h1 { font-size: 2.5rem; }
-      .categories-wrap { justify-content: flex-start; padding: 1.5rem; gap: 1.5rem; }
-      .hanging-container { overflow-x: auto; justify-content: flex-start; padding: 0 1.5rem; height: 300px; }
-      .hanger { min-width: 140px; }
+      .search-container { display: none; }
+      .hero-text h1 { font-size: 2.5rem; }
+      .hanging-categories { overflow-x: auto; justify-content: flex-start; padding: 0 2rem; height: 280px; }
+      .hanging-cat { min-width: 120px; margin: 0 10px; }
+      .hanging-cat img { height: 110px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .product-card { padding: 1rem; }
-      .product-img-box { width: 80px; height: 80px; font-size: 2rem; }
     }
   </style>
 </head>
@@ -199,60 +237,63 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo"><i class="fas fa-shopping-cart" style="color: var(--primary)"></i> <span>APNI-</span>Dukaan</div>
-    
-    <!-- SEARCH BAR -->
     <div class="search-container">
       <i class="fas fa-search"></i>
       <input type="text" id="searchInput" class="search-input" placeholder="Search for products, brands...">
     </div>
-
     <button class="cart-btn" id="openCartBtn">
       <i class="fas fa-shopping-bag"></i> Cart <span class="cart-count" id="cartCount">0</span>
     </button>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Discover <span>Premium</span> Quality</h1>
-    <p>Shop the latest trends in Fashion, Home Essentials, Electronics, and Toys. Delivered to your doorstep.</p>
-  </section>
+  <!-- HERO & HANGING CATEGORIES -->
+  <section class="premium-hero">
+    <div class="hero-text">
+      <h1>Discover <span>Premium</span> Quality</h1>
+      <p>Shop the latest trends in Fashion, Home Essentials, Electronics, and Toys. Delivered to your doorstep.</p>
+    </div>
 
-  <!-- CATEGORY ICONS -->
-  <div class="categories-wrap">
-    <div class="cat-item"><div class="cat-icon"><i class="fas fa-tshirt"></i></div><p>Fashion</p></div>
-    <div class="cat-item"><div class="cat-icon"><i class="fas fa-blender"></i></div><p>Household</p></div>
-    <div class="cat-item"><div class="cat-icon"><i class="fas fa-mobile-alt"></i></div><p>Electronics</p></div>
-    <div class="cat-item"><div class="cat-icon"><i class="fas fa-pump-soap"></i></div><p>Beauty</p></div>
-    <div class="cat-item"><div class="cat-icon"><i class="fas fa-gamepad"></i></div><p>Toys</p></div>
-  </div>
-
-  <!-- FASHION SECTION (Hanging Effect) -->
-  <section class="fashion-section">
-    <h2>New Fashion Arrivals</h2>
-    <p>Experience the premium quality of our new collection.</p>
-    <div class="hanging-container">
+    <!-- Hanging Categories Container -->
+    <div class="hanging-categories">
+      <!-- The Rope -->
       <div class="rope"></div>
-      
-      <div class="hanger" onclick="addToCart('Cotton Shirt', 2500, 'https://purepng.com/public/uploads/large/purepng.com-men-shirt-clothingfashionclothingshirt-1421526461206dw9qg.png')">
-        <div style="width:15px; height:30px; border:2px solid #666; border-bottom:none; border-radius:10px 10px 0 0; margin:0 auto; position:relative; top:8px;"></div>
-        <img src="https://purepng.com/public/uploads/large/purepng.com-men-shirt-clothingfashionclothingshirt-1421526461206dw9qg.png" alt="Shirt">
-        <h3 style="font-size:0.95rem; margin-top:15px; color:white;">Cotton Shirt</h3>
-        <p style="color:var(--primary); font-weight:700;">Rs 2,500</p>
+
+      <!-- Fashion -->
+      <div class="hanging-cat" onclick="alert('Fashion category clicked!')">
+        <div class="hanger-hook"></div>
+        <img src="https://purepng.com/public/uploads/large/purepng.com-men-shirt-clothingfashionclothingshirt-1421526461206dw9qg.png" alt="Fashion">
+        <h3>Fashion</h3>
       </div>
 
-      <div class="hanger" onclick="addToCart('Winter Jacket', 4500, 'https://purepng.com/public/uploads/large/purepng.com-men-jacket-clothingfashionclothingjacket-1421526461215f1j4n.png')">
-        <div style="width:15px; height:30px; border:2px solid #666; border-bottom:none; border-radius:10px 10px 0 0; margin:0 auto; position:relative; top:8px;"></div>
-        <img src="https://purepng.com/public/uploads/large/purepng.com-men-jacket-clothingfashionclothingjacket-1421526461215f1j4n.png" alt="Jacket">
-        <h3 style="font-size:0.95rem; margin-top:15px; color:white;">Winter Jacket</h3>
-        <p style="color:var(--primary); font-weight:700;">Rs 4,500</p>
+      <!-- Household -->
+      <div class="hanging-cat" onclick="alert('Household category clicked!')">
+        <div class="hanger-hook"></div>
+        <!-- A simple cup/mug png -->
+        <img src="https://cdn-icons-png.flaticon.com/512/2933/2933251.png" alt="Household" style="filter: invert(1);">
+        <h3>Household</h3>
       </div>
 
-      <div class="hanger" onclick="addToCart('Grey Hoodie', 3200, 'https://purepng.com/public/uploads/large/purepng.com-hoodie-clothingfashionclothinghoodie-1421526462103a1b6r.png')">
-        <div style="width:15px; height:30px; border:2px solid #666; border-bottom:none; border-radius:10px 10px 0 0; margin:0 auto; position:relative; top:8px;"></div>
-        <img src="https://purepng.com/public/uploads/large/purepng.com-hoodie-clothingfashionclothinghoodie-1421526462103a1b6r.png" alt="Hoodie">
-        <h3 style="font-size:0.95rem; margin-top:15px; color:white;">Grey Hoodie</h3>
-        <p style="color:var(--primary); font-weight:700;">Rs 3,200</p>
+      <!-- Electronics -->
+      <div class="hanging-cat" onclick="alert('Electronics category clicked!')">
+        <div class="hanger-hook"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" alt="Electronics" style="filter: invert(1);">
+        <h3>Electronics</h3>
       </div>
+
+      <!-- Beauty -->
+      <div class="hanging-cat" onclick="alert('Beauty category clicked!')">
+        <div class="hanger-hook"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3163/3163200.png" alt="Beauty" style="filter: invert(1);">
+        <h3>Beauty</h3>
+      </div>
+
+      <!-- Toys -->
+      <div class="hanging-cat" onclick="alert('Toys category clicked!')">
+        <div class="hanger-hook"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081977.png" alt="Toys" style="filter: invert(1);">
+        <h3>Toys</h3>
+      </div>
+
     </div>
   </section>
 
@@ -261,7 +302,6 @@
     <h2 class="section-title">Trending Products</h2>
     <div class="product-grid" id="productGrid">
       
-      <!-- Product 1 -->
       <div class="product-card searchable" data-name="Ceramic Mug Set Home Kitchen">
         <span class="product-tag">Bestseller</span>
         <div class="product-img-box"><i class="fas fa-mug-hot"></i></div>
@@ -270,7 +310,6 @@
         <button class="add-btn" onclick="addToCart('Ceramic Mug Set', 1200, 'fa-mug-hot')">Add to Cart</button>
       </div>
 
-      <!-- Product 2 -->
       <div class="product-card searchable" data-name="Soft Cushion Cover Home Decor">
         <div class="product-img-box"><i class="fas fa-couch"></i></div>
         <h3>Soft Cushion Cover</h3>
@@ -278,7 +317,6 @@
         <button class="add-btn" onclick="addToCart('Soft Cushion Cover', 800, 'fa-couch')">Add to Cart</button>
       </div>
 
-      <!-- Product 3 -->
       <div class="product-card searchable" data-name="Steel Cutlery Set Kitchen">
         <div class="product-img-box"><i class="fas fa-utensils"></i></div>
         <h3>Steel Cutlery Set</h3>
@@ -286,7 +324,6 @@
         <button class="add-btn" onclick="addToCart('Steel Cutlery Set', 1500, 'fa-utensils')">Add to Cart</button>
       </div>
 
-      <!-- Product 4 -->
       <div class="product-card searchable" data-name="Wireless Earbuds Electronics Audio">
         <span class="product-tag">New</span>
         <div class="product-img-box"><i class="fas fa-headphones"></i></div>
@@ -295,7 +332,6 @@
         <button class="add-btn" onclick="addToCart('Wireless Earbuds', 3500, 'fa-headphones')">Add to Cart</button>
       </div>
 
-      <!-- Product 5 -->
       <div class="product-card searchable" data-name="Robot Toy Kids Toys">
         <span class="product-tag">Kids Special</span>
         <div class="product-img-box"><i class="fas fa-robot"></i></div>
@@ -304,7 +340,6 @@
         <button class="add-btn" onclick="addToCart('Robot Toy', 1000, 'fa-robot')">Add to Cart</button>
       </div>
 
-      <!-- Product 6 -->
       <div class="product-card searchable" data-name="Smart Watch Electronics Wearable">
         <div class="product-img-box"><i class="fas fa-clock"></i></div>
         <h3>Smart Watch</h3>
@@ -335,37 +370,26 @@
     </div>
   </div>
 
-  <!-- TOAST -->
   <div class="toast" id="toast">Item added to cart!</div>
 
   <script>
-    // WHATSAPP NUMBER
     const myWhatsAppNumber = "9233334855051"; 
     let cart = [];
 
-    // ================= SEARCH FUNCTIONALITY =================
+    // Search Functionality
     document.getElementById('searchInput').addEventListener('input', function(e) {
       const searchTerm = e.target.value.toLowerCase();
-      const products = document.querySelectorAll('.searchable');
-      
-      products.forEach(product => {
+      document.querySelectorAll('.searchable').forEach(product => {
         const productName = product.getAttribute('data-name').toLowerCase();
-        if (productName.includes(searchTerm)) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
+        product.style.display = productName.includes(searchTerm) ? 'block' : 'none';
       });
     });
 
-    // ================= CART LOGIC =================
+    // Cart Logic
     function addToCart(name, price, imgOrIcon) {
       const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ name, price, imgOrIcon, quantity: 1 });
-      }
+      if (existingItem) existingItem.quantity += 1;
+      else cart.push({ name, price, imgOrIcon, quantity: 1 });
       updateCartUI();
       showToast(name + ' added to cart!');
     }
@@ -373,7 +397,6 @@
     function updateCartUI() {
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       document.getElementById('cartCount').innerText = totalItems;
-
       const container = document.getElementById('cartItemsContainer');
       const totalSpan = document.getElementById('cartTotal');
 
@@ -383,93 +406,63 @@
         return;
       }
 
-      let html = '';
-      let total = 0;
-
+      let html = '', total = 0;
       cart.forEach((item, index) => {
         total += item.price * item.quantity;
-        
         let imgDisplay = item.imgOrIcon.startsWith('http') 
           ? `<img src="${item.imgOrIcon}" style="width:45px; height:45px; object-fit:contain;">` 
           : `<i class="fas ${item.imgOrIcon}" style="font-size:1.5rem; color:var(--primary); width:45px; text-align:center;"></i>`;
-
         html += `
           <div class="cart-item">
             <div class="cart-item-info" style="display:flex; align-items:center; gap:15px;">
               ${imgDisplay}
-              <div>
-                <h4>${item.name}</h4>
-                <p>Rs ${item.price.toLocaleString('en-PK')}</p>
-              </div>
+              <div><h4>${item.name}</h4><p>Rs ${item.price.toLocaleString('en-PK')}</p></div>
             </div>
             <div class="qty-controls">
               <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>
               <span style="font-weight:600;">${item.quantity}</span>
               <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
             </div>
-          </div>
-        `;
+          </div>`;
       });
-
       container.innerHTML = html;
       totalSpan.innerText = 'Rs ' + total.toLocaleString('en-PK');
     }
 
     function changeQty(index, change) {
       cart[index].quantity += change;
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      }
+      if (cart[index].quantity <= 0) cart.splice(index, 1);
       updateCartUI();
     }
 
-    // ================= WHATSAPP CHECKOUT =================
+    // Checkout Logic
     function checkoutWhatsApp() {
-      if (cart.length === 0) {
-        showToast('Please add items to cart first!');
-        return;
-      }
-
+      if (cart.length === 0) { showToast('Please add items to cart first!'); return; }
       let total = 0;
       let message = "Assalam o Alaikum Apni Dukaan! 🛍️\nMujhe yeh order karna hai:\n\n";
-
       cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         message += `▪ ${item.name} (x${item.quantity}) - Rs ${itemTotal.toLocaleString('en-PK')}\n`;
       });
-
       message += `\n*Total Amount: Rs ${total.toLocaleString('en-PK')}*\n\nKripya mera order confirm karein.`;
-
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${myWhatsAppNumber}?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
-    // ================= UI CONTROLS =================
+    // Toast Notification
     let toastTimeout;
     function showToast(msg) {
       const toast = document.getElementById('toast');
       toast.innerText = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2500);
+      toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    document.getElementById('openCartBtn').addEventListener('click', () => {
-      document.getElementById('cartOverlay').classList.add('active');
-    });
-
-    document.getElementById('closeCartBtn').addEventListener('click', () => {
-      document.getElementById('cartOverlay').classList.remove('active');
-    });
-
-    document.getElementById('cartOverlay').addEventListener('click', (e) => {
-      if (e.target.id === 'cartOverlay') {
-        document.getElementById('cartOverlay').classList.remove('active');
-      }
-    });
+    // Cart Panel Controls
+    document.getElementById('openCartBtn').addEventListener('click', () => document.getElementById('cartOverlay').classList.add('active'));
+    document.getElementById('closeCartBtn').addEventListener('click', () => document.getElementById('cartOverlay').classList.remove('active'));
+    document.getElementById('cartOverlay').addEventListener('click', (e) => { if (e.target.id === 'cartOverlay') document.getElementById('cartOverlay').classList.remove('active'); });
   </script>
 </body>
 </html>
